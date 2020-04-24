@@ -17,13 +17,6 @@ Dependencies list:
 
 A simple `make`
 
-## RUN
-
-## RUNTIME
-
-
-Use arrows for move and space bar to fire (bullets are invisible).
-
 ## EPILOGUE
 
 The project has been minded/designed/built in 48H and with 4 collaborators.
