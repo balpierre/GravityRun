@@ -69,4 +69,5 @@ class Options {
     protected:
 };
 
+int Game_Loop(void);
 #endif /* !GRAPHIC_H_ */
