@@ -1,7 +1,7 @@
-#include <iostream>
+#include "../inc/graphic/graphic.hpp"
 
 int main(void)
 {
-    std::cout << "NI\n" << std::endl;
+    Game_Loop();
     return (0);
 }
