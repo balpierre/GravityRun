@@ -6,6 +6,7 @@ subbuild:
 	@make -C graphic   --no-print-directory -s
 	@make -C physic    --no-print-directory -s
 	@make -C interface --no-print-directory -s
+	@make -C Player --no-print-directory -s
 
 BUILDHEADER			=	$(BINARY)
 
