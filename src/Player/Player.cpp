@@ -67,12 +67,10 @@ void Player::swap_gravity()
 int main(void)
 {
     sf::RenderWindow *wd = create_window(1920, 1080, "Test");
-    Player ply({50, 1000});
+    Player ply({50.0f, 1060.0f});
     sf::RectangleShape rect({20, 20});
     rect.setFillColor(sf::Color::White);
-
     
-
     while (wd->isOpen())
     {
         sf::Event evt;
@@ -81,8 +79,14 @@ int main(void)
             if (evt.type == sf::Event::Closed)
                 wd->close();
             if (evt.type == sf::Event::KeyPressed)
+            {
                 if (evt.key.code == sf::Keyboard::Space)
                     ply.swap_gravity();
+                if (evt.key.code == sf::Keyboard::Escape)
+                    wd->close();
+            }
+            if (evt.type == sf::Event::Resized)
+                wd->setSize(sf::Vector2<unsigned int>(evt.size.width, evt.size.height));
         }
         wd->clear();
         ply.update(std::vector<std::string>());
