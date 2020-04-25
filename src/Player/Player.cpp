@@ -5,11 +5,13 @@
 ** Player class
 */
 
-#include "Player.hpp"
+#include "Player/Player.hpp"
 
 Player::Player(sf::Vector2f pos)
 {
     this->_pos = pos;
+    this->_speed = {0x0, 0x0};
+    this->_acc = 980;
 }
 
 Player::~Player() {}
@@ -18,7 +20,8 @@ sf::Vector2f Player::get_pos() { return (this->_pos); }
 
 void Player::update()
 {
-    
+    this->_pos.y = this->_pos.y + (this->_speed.y * POSITION_UPDATE_TIME_IN_CS);
+    this->_speed.y = (this->_acc * POSITION_UPDATE_TIME_IN_CS) + this->_speed.y;
 }
 
 int main(void)

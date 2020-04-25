@@ -34,8 +34,7 @@ LIBFLAGS	=	-lsfml-system	\
 				-lsfml-graphics	\
 				-lpthread
 
-export LDFLAGS			=	-L	$(TGTSHARED_PLTLIB)/*$(EXTENSION_LIB)				\
-							$(LIBFLAGS)
+export LDFLAGS			=	$(LIBFLAGS)
 
 export RM	:=	rm -rf
 
