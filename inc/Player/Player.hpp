@@ -10,6 +10,9 @@
 
 #include <SFML/Graphics.hpp>
 
+sf::RenderWindow *create_window(unsigned int width, unsigned int height, const std::string &name);
+
+
 class Player
 {
 public:
