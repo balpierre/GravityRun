@@ -9,10 +9,14 @@
 #define PLAYER_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "Player/time_management.hpp"
 
 sf::RenderWindow *create_window(unsigned int width, unsigned int height, const std::string &name);
 
 #define POSITION_UPDATE_TIME_IN_CS 10
+#define UPDATE_CD 10
 
 class Player
 {
@@ -21,10 +25,12 @@ public:
     ~Player();
     sf::Vector2f get_pos();
     void update();
+    void swap_gravity();
 private:
     sf::Vector2f _pos;   // {pxX, pxY}
     sf::Vector2f _speed; // mm / cs
     double       _acc;   // mm / cs^2
+    TIMEPOINT _lastUpt;
 };
 
 #endif
