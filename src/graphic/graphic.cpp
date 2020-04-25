@@ -77,9 +77,13 @@ void Map::initMap(std::string dir)
     _background = loadSprite("./assets/background_ingame.png");
     _assetList.insert(std::pair<char, sf::Sprite>('X', loadSprite("./assets/bloc1.png")));
     _assetList.insert(std::pair<char, sf::Sprite>('#', loadSprite("./assets/bloc2.png")));
-    _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
-    _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    // _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    // _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    _actualBock = 0;
+    _nextBlock = 1;
+
     _bloc = getAllblock(_filePaths);
+    _sum = _bloc[_actualBock].size() - 1;
     _scroll.restart();
     _draw.restart();
 }
@@ -123,20 +127,36 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                 window.draw(s);
             }
         }
-
-        if ((bloc1.size() *  _size)  - _distance <= window.getSize().x && i < bloc2.size()) {
-            for (unsigned int j = 0; j < bloc2[i].size(); j++) {
-                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
-                    pos.x = ((j + bloc1.size()) * _size) - _distance;
-                    pos.y = i * _size;
-                    s = getSpriteFromAssetList(bloc2[i][j]);
-                    s.setPosition(pos);
-                    s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
-                    window.draw(s);
-                }
-            }
-        }
     }
+
+    // if ((_sum - bloc1.size() * _size) - _distance <= window.getSize().x ) {
+    //     for (unsigned int i = 0; i < bloc2.size(); i++) {
+    //         for (unsigned int j = 0; j < bloc2[i].size(); j++) {
+    //             if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
+    //                 pos.x = ((j +  _sum + bloc1.size() - 1) * _size) - _distance;
+    //                 pos.y = (i * _size);
+    //                 s = getSpriteFromAssetList(bloc2[i][j]);
+    //                 s.setPosition(pos);
+    //                 s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
+    //                 window.draw(s);
+    //             }
+    //         }
+    //     }
+    // }
+
+        // if ((bloc1.size() *  _size)  - _distance <= window.getSize().x && i < bloc2.size()) {
+        //     for (unsigned int j = 0; j < bloc2[i].size(); j++) {
+        //         if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
+        //             pos.x = ((j + bloc1.size()) * _size) - _distance;
+        //             pos.y = i * _size;
+        //             s = getSpriteFromAssetList(bloc2[i][j]);
+        //             s.setPosition(pos);
+        //             s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
+        //             window.draw(s);
+        //         }
+        //     }
+        // }
+
 }
 
 int Map::draw(sf::RenderWindow &window)
@@ -148,7 +168,7 @@ int Map::draw(sf::RenderWindow &window)
     // _draw.restart();
     drawBackground(window);
     if (_bloc[_actualBock].size() * _size - _distance <= 0) {
-        _sum += _bloc[_actualBock].size();
+        _sum += (_bloc[_actualBock].size()) - 1;
         _actualBock = _nextBlock;
         _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
     }
@@ -192,8 +212,8 @@ void Map::setDistance(int distance)
 
 int Map::scrollMap()
 {
-    if (_scroll.getElapsedTime().asMicroseconds() > _speed) {
+    if (_scroll.getElapsedTime().asMicroseconds() > 1) {
         _scroll.restart();
-        _distance += 1;
+        _distance += 2;
     }
 }

@@ -3,11 +3,12 @@
 int main(void)
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
+    window.setFramerateLimit(90);
     Map m;
 
     m.initMap("block-map");
     m.setSize(50);
-    m.setSpeed(1000);
+    m.setSpeed(1);
 
     sf::Event event;
     while (window.isOpen()) {
@@ -20,8 +21,6 @@ int main(void)
         m.scrollMap();
         m.draw(window);
         window.display();
-        window.setFramerateLimit(60);
     }
-
     return (0);
 }
