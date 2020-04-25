@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 #include "Player/time_management.hpp"
 
@@ -23,14 +24,16 @@ public:
     Player(sf::Vector2f pos);
     ~Player();
     sf::Vector2f get_pos();
-    void update();
+    void update(std::vector<std::string> map);
     void swap_gravity();
+    void check_collision(std::vector<std::string> map);
 private:
     sf::Vector2f _pos;     // {pxX, pxY}
     sf::Vector2f _nextpos; // {pxX, pxY}
     sf::Vector2f _speed;   // mm / cs
     double       _acc;     // mm / cs^2
     TIMEPOINT _lastUpt;
+    bool _colX, _colY;
 };
 
 #endif
