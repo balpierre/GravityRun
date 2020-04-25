@@ -58,8 +58,8 @@ class Options {
         sf::Sprite sprite;
         sf::Texture texture;
         sf::Text options;
-        sf::Text volume;
-        sf::Text back;
+        sf::Text play;
+        sf::Text exit;
         sf::Text volume_25;
         sf::Text volume_50;
         sf::Text volume_75;
