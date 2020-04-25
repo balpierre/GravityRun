@@ -15,7 +15,7 @@
 
 sf::RenderWindow *create_window(unsigned int width, unsigned int height, const std::string &name);
 
-#define UPDATE_CD 10
+#define UPDATE_CD 0.1
 
 class Player
 {

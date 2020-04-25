@@ -11,20 +11,25 @@ Player::Player(sf::Vector2f pos)
 {
     this->_pos = pos;
     this->_speed = {0x0, 0x0};
-    this->_acc = 980;
+    this->_acc = 120;
     this->_lastUpt = NOW;
 }
 
 Player::~Player() {}
 
-sf::Vector2f Player::get_pos() { 
+sf::Vector2f Player::get_pos()
+{ 
     std::cout << this->_pos.x << " " << this->_pos.y << std::endl;
-    return (this->_pos); }
+    return (this->_pos);
+}
 
 void Player::update()
 {
     if (DURATION<MILLISECONDS>(NOW - _lastUpt).count() > UPDATE_CD)
     {
+        if (this->_pos.y >= 1000 && this->_acc > 0 ||
+        this->_pos.y <= 0 && this->_acc < 0)
+            return;
         this->_pos.y = this->_pos.y + ((this->_speed.y * UPDATE_CD) / 100);
         this->_speed.y = (this->_acc * UPDATE_CD) + this->_speed.y;
         this->_lastUpt = NOW;
@@ -34,7 +39,7 @@ void Player::update()
 void Player::swap_gravity()
 {
     this->_acc *= -1;
-    this->_speed.y *= -1;
+    this->_speed.y = 0x0;
 }
 
 int main(void)
