@@ -69,8 +69,8 @@ class Options {
     protected:
 };
 
+int Choose_Character(void);
 int Game_Loop(void);
-<<<<<<< HEAD
 
 #include <fstream>
 #include <dirent.h>
@@ -124,7 +124,4 @@ class Map {
 
 int printSimpleVectorString(std::vector<std::string> vec);
 
-=======
-int Choose_Character(void);
->>>>>>> bpierre
 #endif /* !GRAPHIC_H_ */
