@@ -114,7 +114,7 @@ class Map {
         void setSize(int size);
         void setSpeed(int speed);
         void setDistance(int distance);
-
+        int getPos();
         int scrollMap();
         int drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std::vector<std::string> bloc2);
         void drawBackground(sf::RenderWindow &window);
