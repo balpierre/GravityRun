@@ -15,7 +15,6 @@
 
 sf::RenderWindow *create_window(unsigned int width, unsigned int height, const std::string &name);
 
-#define POSITION_UPDATE_TIME_IN_CS 10
 #define UPDATE_CD 10
 
 class Player

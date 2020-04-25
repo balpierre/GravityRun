@@ -25,15 +25,16 @@ void Player::update()
 {
     if (DURATION<MILLISECONDS>(NOW - _lastUpt).count() > UPDATE_CD)
     {
-        this->_pos.y = this->_pos.y + ((this->_speed.y * POSITION_UPDATE_TIME_IN_CS) / 100);
-        this->_speed.y = (this->_acc * POSITION_UPDATE_TIME_IN_CS) + this->_speed.y;
+        this->_pos.y = this->_pos.y + ((this->_speed.y * UPDATE_CD) / 100);
+        this->_speed.y = (this->_acc * UPDATE_CD) + this->_speed.y;
         this->_lastUpt = NOW;
     }
 }
 
 void Player::swap_gravity()
 {
-
+    this->_acc *= -1;
+    this->_speed.y *= -1;
 }
 
 int main(void)
