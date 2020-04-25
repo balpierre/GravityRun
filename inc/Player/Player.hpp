@@ -26,9 +26,10 @@ public:
     void update();
     void swap_gravity();
 private:
-    sf::Vector2f _pos;   // {pxX, pxY}
-    sf::Vector2f _speed; // mm / cs
-    double       _acc;   // mm / cs^2
+    sf::Vector2f _pos;     // {pxX, pxY}
+    sf::Vector2f _nextpos; // {pxX, pxY}
+    sf::Vector2f _speed;   // mm / cs
+    double       _acc;     // mm / cs^2
     TIMEPOINT _lastUpt;
 };
 

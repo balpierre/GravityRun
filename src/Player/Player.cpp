@@ -12,6 +12,8 @@ Player::Player(sf::Vector2f pos)
     this->_pos = pos;
     this->_speed = {0x0, 0x0};
     this->_acc = 120;
+    this->_nextpos = pos;
+    this->_nextpos.y = this->_pos.y + ((this->_speed.y * UPDATE_CD) / 100);
     this->_lastUpt = NOW;
 }
 
@@ -32,6 +34,7 @@ void Player::update()
             return;
         this->_pos.y = this->_pos.y + ((this->_speed.y * UPDATE_CD) / 100);
         this->_speed.y = (this->_acc * UPDATE_CD) + this->_speed.y;
+        this->_nextpos.y = this->_pos.y + ((this->_speed.y * UPDATE_CD) / 100);
         this->_lastUpt = NOW;
     }
 }
