@@ -129,20 +129,20 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
         }
     }
 
-    // if ((_sum - bloc1.size() * _size) - _distance <= window.getSize().x ) {
-    //     for (unsigned int i = 0; i < bloc2.size(); i++) {
-    //         for (unsigned int j = 0; j < bloc2[i].size(); j++) {
-    //             if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
-    //                 pos.x = ((j +  _sum + bloc1.size() - 1) * _size) - _distance;
-    //                 pos.y = (i * _size);
-    //                 s = getSpriteFromAssetList(bloc2[i][j]);
-    //                 s.setPosition(pos);
-    //                 s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
-    //                 window.draw(s);
-    //             }
-    //         }
-    //     }
-    // }
+    if ((_sum - bloc1.size() * _size) - _distance <= window.getSize().x ) {
+        for (unsigned int i = 0; i < bloc2.size(); i++) {
+            for (unsigned int j = 0; j < bloc2[i].size(); j++) {
+                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
+                    pos.x = ((j +  _sum + bloc1.size() - 1) * _size) - _distance;
+                    pos.y = (i * _size);
+                    s = getSpriteFromAssetList(bloc2[i][j]);
+                    s.setPosition(pos);
+                    s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
+                    window.draw(s);
+                }
+            }
+        }
+    }
 
         // if ((bloc1.size() *  _size)  - _distance <= window.getSize().x && i < bloc2.size()) {
         //     for (unsigned int j = 0; j < bloc2[i].size(); j++) {
@@ -177,7 +177,7 @@ int Map::draw(sf::RenderWindow &window)
 
 std::vector<std::string> Map::getMap()
 {
-    return (_map);
+    return (_bloc[_actualBock]);
 }
 
 void Map::setSpeed(int speed)
