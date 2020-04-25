@@ -15,6 +15,7 @@ class Player
 public:
     Player();
     ~Player();
+    sf::Vector2f get_pos();
 private:
     sf::Vector2f _pos;
     sf::Vector2f _acc;
