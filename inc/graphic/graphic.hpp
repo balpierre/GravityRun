@@ -31,26 +31,6 @@ class Menu {
     protected:
 };
 
-class Connexion{
-    public:
-        Connexion();
-        ~Connexion();
-        int connexion_page();
-        sf::Sprite sprite;
-        sf::Texture texture;
-        sf::String playerInput;
-        sf::Text playerText;
-        sf::Text text;
-        sf::Text text_username;
-        sf::Text text_ip;
-        sf::Text text_port;
-        sf::Font font;
-        std::string _ip;
-        unsigned short _port;
-    private:
-    protected:
-};
-
 class Options {
     public:
         Options();

@@ -43,7 +43,7 @@ int Game_Loop(void)
                 }
                 if ((MousePosition.y >= 258 && MousePosition.y <= 677) && (MousePosition.x >= 51 && MousePosition.x <= 572)) {
                     printf("exit");
-                    // window.close();
+                    window.close();
                 }
             }
             if (event.type == sf::Event::Closed)
