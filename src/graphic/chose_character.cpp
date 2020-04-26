@@ -32,10 +32,14 @@ Character Choose_Character(void)
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::MouseButtonPressed && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                if ((MousePosition.y >= 464 && MousePosition.y <= 857) && (MousePosition.x >= 267 && MousePosition.x <= 871))
+                if ((MousePosition.y >= 464 && MousePosition.y <= 857) && (MousePosition.x >= 267 && MousePosition.x <= 871)) {
+                    window.close();
                     return (SONIC);
-                if ((MousePosition.y >= 787 && MousePosition.y <= 867) && (MousePosition.x >= 1543 && MousePosition.x <= 1742))
+                }
+                if ((MousePosition.y >= 787 && MousePosition.y <= 867) && (MousePosition.x >= 1543 && MousePosition.x <= 1742)) {
+                    window.close();
                     return (MARIO);
+                }
             }
             if (event.type == sf::Event::Closed)
                 window.close();

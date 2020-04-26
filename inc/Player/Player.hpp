@@ -38,6 +38,7 @@ private:
     sf::Vector2f _speed;   // mm / cs
     double       _acc;     // mm / cs^2
     TIMEPOINT _lastUpt;
+    TIMEPOINT _lastSpriteUpt;
     bool _colX, _colY;
     sf::Sprite _sprite;
     sf::Texture _text;

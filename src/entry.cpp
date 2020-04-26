@@ -17,7 +17,6 @@ int game_loop2(Character ch)
     window.setFramerateLimit(240);
     Map m;
     Player ply({450, 16 * 50}, ch);
-    sf::RectangleShape rect({20, 20});
 
     m.initMap("block-map");
     m.setSize(50);
@@ -32,7 +31,6 @@ int game_loop2(Character ch)
                 if (event.key.code == sf::Keyboard::Space)
                     ply.swap_gravity();
         }
-        std::cout << m.getPos() << std::endl;
         window.clear();
         m.scrollMap();
         m.draw(window);
@@ -41,9 +39,7 @@ int game_loop2(Character ch)
             //LE PLAYER EST MORT
             exit(0);
         }
-        rect.setPosition(ply.get_pos());
         window.draw(ply.get_sprite());
-        window.draw(rect);
         window.display();
     }
     return (0);
