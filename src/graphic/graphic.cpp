@@ -169,9 +169,12 @@ int Map::draw(sf::RenderWindow &window)
 
 std::vector<std::string> Map::getMap(sf::Vector2f posPlayer)
 {
-    if (posPlayer.x > ((float)( _bloc[_actualBock][0].size() * _size) - _distance))
-        return (_bloc[_nextBlock]);
-    return (_bloc[_actualBock]);
+    std::vector<std::string> res;
+
+    for (unsigned int i = 0; i < _bloc[_actualBock].size(); i++) {
+        res.push_back(_bloc[_actualBock][i] + _bloc[_nextBlock][i]);
+    }
+    return (res);
 }
 
 void Map::setSpeed(int speed)
