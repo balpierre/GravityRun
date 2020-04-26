@@ -15,7 +15,8 @@
 #include "Player/time_management.hpp"
 #include "graphic/graphic.hpp"
 
-sf::RenderWindow *create_window(unsigned int width, unsigned int height, const std::string &name);
+void highscore_write(uint score);
+uint highscore_read(void);
 
 #define UPDATE_CD 0.1
 #define IS_A_WALL(c) (c == 'X' || c == '#')

@@ -2,17 +2,18 @@
 #include "Player/Player.hpp"
 #include "graphic/map.hpp"
 
-int game_loop2(Character ch);
+int game_loop2(Character ch, uint hs);
 
 int main(void)
 {
     Character ch = Game_Loop();
     if (ch == undifined)
         exit(0);
-    game_loop2(ch);
+    uint hScore = highscore_read();
+    game_loop2(ch, hScore);
 }
 
-int game_loop2(Character ch)
+int game_loop2(Character ch, uint hs)
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
     window.setFramerateLimit(240);
@@ -21,6 +22,8 @@ int game_loop2(Character ch)
     sf::Font font;
     font.loadFromFile("assets/Sonic Barrier.ttf");
     sf::Text txt(std::to_string(0), font, 33);
+    sf::Text hs_txt(std::string( "Highscore: " + std::to_string(hs)), font, 33);
+    hs_txt.setPosition({1700, 25});
     txt.setPosition({960 , 25});
 
     m.initMap("block-map");
@@ -41,9 +44,13 @@ int game_loop2(Character ch)
         m.draw(window);
         txt.setString(std::to_string(m.getScore()));
         window.draw(txt);
+        window.draw(hs_txt);
         if (!ply.update(m.getMap(ply.get_pos()), m.getDistance()))
         {
-            //LE PLAYER EST MORT
+            if (m.getScore() > ((int)hs)) {
+                highscore_write(m.getScore());
+                std::cout << "LEO EST UNE PUTE\n";
+            }
             exit(0);
         }
         window.draw(ply.get_sprite());

@@ -14,7 +14,7 @@
 
 #include "def/typedef.h"
 
-#define FILENAME "../../assets/highscore.txt"
+#define FILENAME "assets/highscore.txt"
 
 void highscore_write(uint score)
 {
