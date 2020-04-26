@@ -4,16 +4,15 @@
 int main(void)
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
-    window.setFramerateLimit(90);
+    window.setFramerateLimit(180);
     Map m;
-    Player ply({450, 17 * 50});
+    Player ply({450, 16 * 50});
     sf::RectangleShape rect({20, 20});
     rect.setFillColor(sf::Color::White);
 
     m.initMap("block-map");
     m.setSize(50);
     m.setSpeed(1);
-
     sf::Event event;
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
