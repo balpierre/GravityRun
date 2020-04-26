@@ -5,13 +5,14 @@
 ** graphic.cpp
 */
 
-#include "../../inc/graphic/graphic.hpp"
+#include "../../inc/graphic/map.hpp"
 
 Map::Map()
 {
     _size = 50;
     _speed = 0;
     _distance = 0;
+    _score = 0;
 }
 
 Map::~Map()
@@ -81,9 +82,7 @@ void Map::initMap(std::string dir)
     _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
 
     _bloc = getAllblock(_filePaths);
-    _sum = _bloc[_actualBock].size() - 1;
     _scroll.restart();
-    _draw.restart();
 }
 
 sf::Sprite Map::getSpriteFromAssetList(char c)
@@ -208,10 +207,26 @@ void Map::setDistance(int distance)
     _distance = distance;
 }
 
+int Map::getScore()
+{
+    return (_score);
+}
+
+void Map::restart()
+{
+    _distance = 0;
+    _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    _scroll.restart();
+}
+
 int Map::scrollMap()
 {
     if (_scroll.getElapsedTime().asMicroseconds() > 1) {
         _scroll.restart();
         _distance += 2;
     }
+    if (_score * 50 > _distance)
+        _score++;
+    return (0);
 }
