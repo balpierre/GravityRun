@@ -37,6 +37,16 @@ class Menu {
     protected:
 };
 
+class Character_player {
+    public:
+    Character_player();
+    ~Character_player();
+    sf::Sprite sprite;
+    sf::Texture texture;
+    private:
+    protected:
+};
+
 class Options {
     public:
         Options();
@@ -55,6 +65,7 @@ class Options {
     protected:
 };
 
+<<<<<<< HEAD
 #include <fstream>
 #include <dirent.h>
 #include <map>
@@ -64,5 +75,6 @@ class Options {
 int printSimpleVectorString(std::vector<std::string> vec);
 
 Character Game_Loop(void);
+int Options_Page(void);
 Character Choose_Character(void);
 #endif /* !GRAPHIC_H_ */

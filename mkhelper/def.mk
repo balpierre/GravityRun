@@ -32,6 +32,7 @@ LIBFLAGS	=	-lsfml-system	\
 				-lsfml-window	\
 				-lsfml-network	\
 				-lsfml-graphics	\
+				-lsfml-audio	\
 				-lpthread
 
 export LDFLAGS			=	$(LIBFLAGS)

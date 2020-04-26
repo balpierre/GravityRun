@@ -7,7 +7,7 @@
 
 #include "../../inc/graphic/graphic.hpp"
 
-Options::Options()
+Character_player::Character_player()
 {
     sf::IntRect rect (0, 0, 1920, 1080);
     this->texture.loadFromFile("./assets/menucharacter.jpg");
@@ -15,14 +15,13 @@ Options::Options()
     this->sprite.setTextureRect(rect);
 }
 
-Options::~Options()
+Character_player::~Character_player()
 {
 }
 
 Character Choose_Character(void)
 {
-    Menu menu;
-    Options opt;
+    Character_player opt;
 
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Choose your runner !");
     while (window.isOpen())

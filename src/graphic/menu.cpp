@@ -33,16 +33,16 @@ Character Game_Loop(void)
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::MouseButtonPressed && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                // std::cout << "x= " << MousePosition.x << "y= " << MousePosition.y << std::endl;
                 if ((MousePosition.x >= 29 && MousePosition.x <= 267) && (MousePosition.y >= 281 && MousePosition.y <= 392)) {
-                    std::cout << "PLAY" << std::endl;
+                    window.close();
                     return (Choose_Character());
+                }
+                if ((MousePosition.y >= 418 && MousePosition.y <= 526 ) && (MousePosition.x >= 61 && MousePosition.x <= 414)) {
+                    Options_Page();
                     window.close();
                 }
-                if ((MousePosition.y >= 413 && MousePosition.y <= 539 ) && (MousePosition.y >= 47 && MousePosition.y <= 420)) {
-                    std::cout << "OPTIONS" << std::endl;
-                }
-                if ((MousePosition.y >= 258 && MousePosition.y <= 677) && (MousePosition.x >= 51 && MousePosition.x <= 572)) {
-                    printf("exit");
+                if ((MousePosition.y >= 569 && MousePosition.y <= 682) && (MousePosition.x >= 68 && MousePosition.x <= 256)) {
                     window.close();
                 }
             }
