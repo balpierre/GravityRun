@@ -37,6 +37,16 @@ class Menu {
     protected:
 };
 
+class Character_player {
+    public:
+    Character_player();
+    ~Character_player();
+    sf::Sprite sprite;
+    sf::Texture texture;
+    private:
+    protected:
+};
+
 class Options {
     public:
         Options();
@@ -56,5 +66,6 @@ class Options {
 };
 
 int Game_Loop(void);
+int Options_Page(void);
 Character Choose_Character(void);
 #endif /* !GRAPHIC_H_ */
