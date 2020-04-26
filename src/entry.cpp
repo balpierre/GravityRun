@@ -27,7 +27,7 @@ int main(void)
         window.clear();
         m.scrollMap();
         m.draw(window);
-        ply.update(m.getMap(), m.getDistance());
+        ply.update(m.getMap(ply.get_pos()), m.getDistance());
         rect.setPosition(ply.get_pos());
         window.draw(rect);
         window.display();
