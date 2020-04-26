@@ -19,7 +19,7 @@ Options::~Options()
 {
 }
 
-int Choose_Character(void)
+Character Choose_Character(void)
 {
     Menu menu;
     Options opt;
@@ -33,17 +33,16 @@ int Choose_Character(void)
         {
             if (event.type == sf::Event::MouseButtonPressed && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if ((MousePosition.y >= 464 && MousePosition.y <= 857) && (MousePosition.x >= 267 && MousePosition.x <= 871))
-                    printf("SONIC");
-                if ((MousePosition.y >= 870 && MousePosition.y <= 1740) && (MousePosition.x >= 789 && MousePosition.x <= 1545))
-                    printf("MARIO");
+                    return (SONIC);
+                if ((MousePosition.y >= 787 && MousePosition.y <= 867) && (MousePosition.x >= 1543 && MousePosition.x <= 1742))
+                    return (MARIO);
             }
             if (event.type == sf::Event::Closed)
                 window.close();
         }
     window.clear();
     window.draw(opt.sprite);
-    // window.draw(opt.options);
     window.display();
     }
-    return (0);
+    return (undifined);
 }

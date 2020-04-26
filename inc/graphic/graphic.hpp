@@ -16,6 +16,12 @@
 #include <string>
 #include <vector>
 
+enum Character
+{
+    undifined,
+    SONIC,
+    MARIO
+};
 class Menu {
     public:
         Menu();
@@ -50,5 +56,5 @@ class Options {
 };
 
 int Game_Loop(void);
-int Choose_Character(void);
+Character Choose_Character(void);
 #endif /* !GRAPHIC_H_ */
