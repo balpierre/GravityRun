@@ -28,6 +28,7 @@ public:
     void update(std::vector<std::string> map, int dist);
     void swap_gravity();
     bool check_collision(std::vector<std::string> map, int dist);
+    sf::Sprite get_sprite();
 private:
     sf::Vector2f _pos;     // {pxX, pxY}
     sf::Vector2f _nextpos; // {pxX, pxY}
@@ -35,6 +36,7 @@ private:
     double       _acc;     // mm / cs^2
     TIMEPOINT _lastUpt;
     bool _colX, _colY;
+    sf::Sprite _sprite;
 };
 
 #endif

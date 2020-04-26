@@ -75,3 +75,5 @@ void Player::swap_gravity()
     this->_acc *= -1;
     this->_speed.y = 0x0;
 }
+
+sf::Sprite get_sprite() { return (this->_sprite); }
