@@ -65,7 +65,6 @@ class Options {
     protected:
 };
 
-<<<<<<< HEAD
 #include <fstream>
 #include <dirent.h>
 #include <map>
