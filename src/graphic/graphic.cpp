@@ -13,6 +13,7 @@ Map::Map()
     _speed = 0;
     _distance = 0;
     _score = 0;
+    _backDist = 0;
 }
 
 Map::~Map()
@@ -104,6 +105,11 @@ float getScale(float n, float size)
 
 void Map::drawBackground(sf::RenderWindow &window)
 {
+    if (_backDist > 1920)
+        _backDist = 0;
+    _background.setPosition((-_backDist), 0);
+    window.draw(_background);
+    _background.setPosition(((float)_background.getPosition().x + 1920), 0);
     window.draw(_background);
 }
 
@@ -235,7 +241,9 @@ int Map::scrollMap()
     if (_scroll.getElapsedTime().asMicroseconds() > 1) {
         _scroll.restart();
         _distance += 2;
+        _backDist += 0.6;
         _score++;
     }
+
     return (0);
 }

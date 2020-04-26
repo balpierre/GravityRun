@@ -49,7 +49,6 @@ int game_loop2(Character ch, uint hs)
         {
             if (m.getScore() > ((int)hs)) {
                 highscore_write(m.getScore());
-                std::cout << "LEO EST UNE PUTE\n";
             }
             exit(0);
         }
