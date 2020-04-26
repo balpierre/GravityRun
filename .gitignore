@@ -2,6 +2,7 @@
 build
 *.bin
 *.dep
+assets/highscore.txt
 
 # Prerequisites
 *.d

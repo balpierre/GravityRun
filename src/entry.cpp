@@ -18,7 +18,7 @@ int game_loop2(Character ch, uint hs)
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
     window.setFramerateLimit(240);
     Map m;
-    Player ply({450, 16 * 50}, ch);
+    Player ply({450, 10 * 50}, ch);
     sf::Font font;
     font.loadFromFile("assets/Sonic Barrier.ttf");
     sf::Text txt(std::to_string(0), font, 33);
