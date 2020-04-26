@@ -98,7 +98,7 @@ sf::Sprite Map::getSpriteFromAssetList(char c)
 float getScale(float n, float size)
 {
     float r;
-    
+
     r = (float)((size+ 1.0f) / n);
     return ((float)r);
 }
@@ -114,7 +114,7 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
     sf::Sprite s;
 
     for (unsigned int i = 0; i < bloc1.size(); i++) {
-        // std::cout << (0 * _size) - _distance << std::endl;
+        // std::cout << (0 * _size) - _distance << std::
         for (unsigned int j = 0; j < bloc1[i].size() && ( (int)(j * _size - _distance) < 1920) ; j++) {
             // std::cout << "here: " << (((int)(j * _size - _distance))) << " | " << j  << " | " <<  _distance << std::endl;
             if (bloc1[i][j] == 'X' || bloc1[i][j] == '#' && ((int)(j * _size) - _distance) > 0) {
@@ -126,7 +126,6 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                 window.draw(s);
             }
         }
-
         if ((bloc1[i].size() * _size) - _distance <= window.getSize().x && i < bloc2.size()) {
             for (unsigned int j = 0; j < bloc2[i].size() && ( (int)((bloc1[i].size() + j) * _size) - _distance) < (int)window.getSize().x; j++) {
                 if (bloc2[i][j] == 'X' || bloc2[i][j] == '#' &&
@@ -153,14 +152,15 @@ int Map::draw(sf::RenderWindow &window)
 
             _actualBock = _nextBlock;
             _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
-            std::cout << "HEEEEEEEEEEEERRRRE" << _actualBock << _nextBlock << std::endl;
         }
     }
     drawBloc(window, _bloc[_actualBock], _bloc[_nextBlock]);
 }
 
-std::vector<std::string> Map::getMap()
+std::vector<std::string> Map::getMap(sf::Vector2f posPlayer)
 {
+    if (posPlayer.x > ((float)( _bloc[_actualBock][0].size() * _size) - _distance))
+        return (_bloc[_nextBlock]);
     return (_bloc[_actualBock]);
 }
 

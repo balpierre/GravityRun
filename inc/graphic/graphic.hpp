@@ -110,6 +110,7 @@ class Map {
         int getDistance();
         int getSize();
         int getSpeed();
+        std::vector<std::string> getMap(sf::Vector2f posPlayer);
 
         void setSize(int size);
         void setSpeed(int speed);
