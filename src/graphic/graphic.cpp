@@ -108,16 +108,16 @@ void Map::drawBackground(sf::RenderWindow &window)
     window.draw(_background);
 }
 
-
 int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std::vector<std::string> bloc2)
 {
     sf::Vector2f pos(0, 0);
     sf::Sprite s;
 
     for (unsigned int i = 0; i < bloc1.size(); i++) {
-        for (unsigned int j = 0; j < bloc1[i].size(); j++) {
-            if (bloc1[i][j] == 'X' || bloc1[i][j] == '#' && (j * _size) - _distance < window.getSize().x &&
-                (j * _size) - _distance > 0) {
+        // std::cout << (0 * _size) - _distance << std::endl;
+        for (unsigned int j = 0; j < bloc1[i].size() && ( (int)(j * _size - _distance) < 1920) ; j++) {
+            // std::cout << "here: " << (((int)(j * _size - _distance))) << " | " << j  << " | " <<  _distance << std::endl;
+            if (bloc1[i][j] == 'X' || bloc1[i][j] == '#' && ((int)(j * _size) - _distance) > 0) {
                 pos.x = (j * _size) - _distance;
                 pos.y = (i * _size);
                 s = getSpriteFromAssetList(bloc1[i][j]);
@@ -126,10 +126,11 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                 window.draw(s);
             }
         }
+
         if ((bloc1[i].size() * _size) - _distance <= window.getSize().x && i < bloc2.size()) {
-            for (unsigned int j = 0; j < bloc2[i].size(); j++) {
-                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#' && (((bloc1[i].size() + j) * _size) - _distance) < window.getSize().x &&
-                    (((bloc1[i].size() + j) * _size) - _distance) > 0) {
+            for (unsigned int j = 0; j < bloc2[i].size() && ( (int)((bloc1[i].size() + j) * _size) - _distance) < (int)window.getSize().x; j++) {
+                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#' &&
+                    ((int)((bloc1[i].size() + j) * _size) - _distance) > 0) {
                     pos.x = (((bloc1[i].size() + j) * _size) - _distance);
                     pos.y = (i * _size);
                     s = getSpriteFromAssetList(bloc2[i][j]);
