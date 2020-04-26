@@ -17,6 +17,7 @@ int main(void)
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+        std::cout << m.getPos() << std::endl;
         window.clear();
         m.scrollMap();
         m.draw(window);

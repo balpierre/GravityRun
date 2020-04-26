@@ -77,10 +77,10 @@ void Map::initMap(std::string dir)
     _background = loadSprite("./assets/background_ingame.png");
     _assetList.insert(std::pair<char, sf::Sprite>('X', loadSprite("./assets/bloc1.png")));
     _assetList.insert(std::pair<char, sf::Sprite>('#', loadSprite("./assets/bloc2.png")));
-    // _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
-    // _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
-    _actualBock = 0;
-    _nextBlock = 1;
+    _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    // _actualBock = 0;
+    // _nextBlock = 1;
 
     _bloc = getAllblock(_filePaths);
     _sum = _bloc[_actualBock].size() - 1;
@@ -127,13 +127,10 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                 window.draw(s);
             }
         }
-    }
-
-    if ((_sum - bloc1.size() * _size) - _distance <= window.getSize().x ) {
-        for (unsigned int i = 0; i < bloc2.size(); i++) {
+        if ((bloc1[i].size() * _size) - _distance <= window.getSize().x && i < bloc2.size()) {
             for (unsigned int j = 0; j < bloc2[i].size(); j++) {
                 if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
-                    pos.x = ((j +  _sum + bloc1.size() - 1) * _size) - _distance;
+                    pos.x = (((bloc1[i].size() + j) * _size) - _distance);
                     pos.y = (i * _size);
                     s = getSpriteFromAssetList(bloc2[i][j]);
                     s.setPosition(pos);
@@ -143,34 +140,20 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
             }
         }
     }
-
-        // if ((bloc1.size() *  _size)  - _distance <= window.getSize().x && i < bloc2.size()) {
-        //     for (unsigned int j = 0; j < bloc2[i].size(); j++) {
-        //         if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
-        //             pos.x = ((j + bloc1.size()) * _size) - _distance;
-        //             pos.y = i * _size;
-        //             s = getSpriteFromAssetList(bloc2[i][j]);
-        //             s.setPosition(pos);
-        //             s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
-        //             window.draw(s);
-        //         }
-        //     }
-        // }
-
 }
 
 int Map::draw(sf::RenderWindow &window)
 {
-    // if (_draw.getElapsedTime().asMilliseconds() < 10) {
-    //     return (0);
-    // }
-
-    // _draw.restart();
     drawBackground(window);
-    if (_bloc[_actualBock].size() * _size - _distance <= 0) {
-        _sum += (_bloc[_actualBock].size()) - 1;
-        _actualBock = _nextBlock;
-        _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+    for (unsigned int i = 0; i < _bloc[_actualBock].size(); i++) {
+        if (( _bloc[_actualBock][i].size() * _size) - _distance <= 0) {
+            // _sum += (_bloc[_actualBock].size()) - 1;
+            _distance = 0;
+
+            _actualBock = _nextBlock;
+            _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
+            std::cout << "HEEEEEEEEEEEERRRRE" << _actualBock << _nextBlock << std::endl;
+        }
     }
     drawBloc(window, _bloc[_actualBock], _bloc[_nextBlock]);
 }
@@ -183,6 +166,17 @@ std::vector<std::string> Map::getMap()
 void Map::setSpeed(int speed)
 {
     _speed = speed;
+}
+
+int Map::getPos()
+{
+    for (unsigned int i = 0; i < _bloc[_actualBock].size(); i++) {
+        for (int j = 0; j < _bloc[_actualBock][i].size(); j++) {
+            if ((j) - _distance / _size == 0)
+                return (j);
+        }
+    }
+    return (-1);
 }
 
 void Map::setSize(int size)
