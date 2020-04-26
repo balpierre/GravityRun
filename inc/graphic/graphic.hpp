@@ -16,6 +16,12 @@
 #include <string>
 #include <vector>
 
+enum Character
+{
+    undifined,
+    SONIC,
+    MARIO
+};
 class Menu {
     public:
         Menu();
@@ -27,26 +33,6 @@ class Menu {
         std::string _ip;
         int _port;
 
-    private:
-    protected:
-};
-
-class Connexion{
-    public:
-        Connexion();
-        ~Connexion();
-        int connexion_page();
-        sf::Sprite sprite;
-        sf::Texture texture;
-        sf::String playerInput;
-        sf::Text playerText;
-        sf::Text text;
-        sf::Text text_username;
-        sf::Text text_ip;
-        sf::Text text_port;
-        sf::Font font;
-        std::string _ip;
-        unsigned short _port;
     private:
     protected:
 };
@@ -68,9 +54,6 @@ class Options {
     private:
     protected:
 };
-
-int Choose_Character(void);
-int Game_Loop(void);
 
 #include <fstream>
 #include <dirent.h>
@@ -125,4 +108,6 @@ class Map {
 
 int printSimpleVectorString(std::vector<std::string> vec);
 
+int Game_Loop(void);
+Character Choose_Character(void);
 #endif /* !GRAPHIC_H_ */
