@@ -79,8 +79,6 @@ void Map::initMap(std::string dir)
     _assetList.insert(std::pair<char, sf::Sprite>('#', loadSprite("./assets/bloc2.png")));
     _actualBock = std::experimental::randint(0, (int)_filePaths.size() - 1);
     _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
-    // _actualBock = 0;
-    // _nextBlock = 1;
 
     _bloc = getAllblock(_filePaths);
     _sum = _bloc[_actualBock].size() - 1;
@@ -118,7 +116,8 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
 
     for (unsigned int i = 0; i < bloc1.size(); i++) {
         for (unsigned int j = 0; j < bloc1[i].size(); j++) {
-            if (bloc1[i][j] == 'X' || bloc1[i][j] == '#') {
+            if (bloc1[i][j] == 'X' || bloc1[i][j] == '#' && (j * _size) - _distance < window.getSize().x &&
+                (j * _size) - _distance > 0) {
                 pos.x = (j * _size) - _distance;
                 pos.y = (i * _size);
                 s = getSpriteFromAssetList(bloc1[i][j]);
@@ -129,7 +128,8 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
         }
         if ((bloc1[i].size() * _size) - _distance <= window.getSize().x && i < bloc2.size()) {
             for (unsigned int j = 0; j < bloc2[i].size(); j++) {
-                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#') {
+                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#' && (((bloc1[i].size() + j) * _size) - _distance) < window.getSize().x &&
+                    (((bloc1[i].size() + j) * _size) - _distance) > 0) {
                     pos.x = (((bloc1[i].size() + j) * _size) - _distance);
                     pos.y = (i * _size);
                     s = getSpriteFromAssetList(bloc2[i][j]);
