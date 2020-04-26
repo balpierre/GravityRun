@@ -21,7 +21,7 @@ Menu::~Menu()
 
 }
 
-int Game_Loop(void)
+Character Game_Loop(void)
 {
     Menu menu;
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "GravityRun");
@@ -35,7 +35,7 @@ int Game_Loop(void)
             if (event.type == sf::Event::MouseButtonPressed && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if ((MousePosition.x >= 29 && MousePosition.x <= 267) && (MousePosition.y >= 281 && MousePosition.y <= 392)) {
                     std::cout << "PLAY" << std::endl;
-                    Choose_Character();
+                    return (Choose_Character());
                     window.close();
                 }
                 if ((MousePosition.y >= 413 && MousePosition.y <= 539 ) && (MousePosition.y >= 47 && MousePosition.y <= 420)) {
@@ -53,5 +53,5 @@ int Game_Loop(void)
         window.draw(menu.sprite);
         window.display();
     }
-    return (0);
+    return (undifined);
 }

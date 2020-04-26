@@ -108,6 +108,6 @@ class Map {
 
 int printSimpleVectorString(std::vector<std::string> vec);
 
-int Game_Loop(void);
+Character Game_Loop(void);
 Character Choose_Character(void);
 #endif /* !GRAPHIC_H_ */
