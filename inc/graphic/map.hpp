@@ -41,7 +41,6 @@ class Map {
         Map();
         ~Map();
 
-
         /* ---- init ---- */
         void initMap(std::string dir);
         std::vector<std::string> getFileContent(std::string filePath);
@@ -73,4 +72,5 @@ class Map {
 };
 
 int printSimpleVectorString(std::vector<std::string> vec);
+
 #endif

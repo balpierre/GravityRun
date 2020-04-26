@@ -13,6 +13,7 @@
 #include <stdlib.h>
 
 #include "def/typedef.h"
+#include "Player/Player.hpp"
 
 #define FILENAME "assets/highscore.txt"
 
@@ -38,7 +39,7 @@ uint highscore_read(void)
     s = (char *)malloc(st.st_size + 2);
     if (!s)
         return (0);
-    if (read(fd, s, st.st_size) == st.st_size);
+    if (read(fd, s, st.st_size) == st.st_size)
         score = atoi(s);
     free(s);
     return ((uint)score);
