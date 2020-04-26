@@ -24,9 +24,9 @@ public:
     Player(sf::Vector2f pos);
     ~Player();
     sf::Vector2f get_pos();
-    void update(std::vector<std::string> map);
+    void update(std::vector<std::string> map, int dist);
     void swap_gravity();
-    void check_collision(std::vector<std::string> map);
+    void check_collision(std::vector<std::string> map, int dist);
 private:
     sf::Vector2f _pos;     // {pxX, pxY}
     sf::Vector2f _nextpos; // {pxX, pxY}
