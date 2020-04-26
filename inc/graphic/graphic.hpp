@@ -69,6 +69,7 @@ class Options {
     protected:
 };
 
+int Choose_Character(void);
 int Game_Loop(void);
 
 #include <fstream>
