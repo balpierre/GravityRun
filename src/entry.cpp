@@ -1,4 +1,4 @@
-#include "../inc/graphic/graphic.hpp"
+#include "../inc/graphic/map.hpp"
 
 int main(void)
 {

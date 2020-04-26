@@ -13,6 +13,7 @@
 #include <map>
 #include <iterator>
 #include <experimental/random>
+
 #include "../../inc/graphic/graphic.hpp"
 
 class Map {
@@ -23,8 +24,12 @@ class Map {
         int _actualBock;
         int _nextBlock;
 
+        float _backDist;
         std::map<char, sf::Sprite> _assetList;
+
         sf::Sprite _background;
+
+
         sf::Clock _scroll;
 
         int _size;
@@ -32,10 +37,10 @@ class Map {
         int _distance;
         int _score;
 
-
     public:
         Map();
         ~Map();
+
 
         /* ---- init ---- */
         void initMap(std::string dir);
