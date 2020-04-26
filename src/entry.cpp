@@ -1,5 +1,6 @@
 #include "../inc/graphic/graphic.hpp"
 #include "Player/Player.hpp"
+#include "graphic/map.hpp"
 
 int game_loop2(Character ch);
 
@@ -17,6 +18,10 @@ int game_loop2(Character ch)
     window.setFramerateLimit(240);
     Map m;
     Player ply({450, 16 * 50}, ch);
+    sf::Font font;
+    font.loadFromFile("assets/Sonic Barrier.ttf");
+    sf::Text txt(std::to_string(0), font, 33);
+    txt.setPosition({960 , 25});
 
     m.initMap("block-map");
     m.setSize(50);
@@ -34,6 +39,8 @@ int game_loop2(Character ch)
         window.clear();
         m.scrollMap();
         m.draw(window);
+        txt.setString(std::to_string(m.getScore()));
+        window.draw(txt);
         if (!ply.update(m.getMap(ply.get_pos()), m.getDistance()))
         {
             //LE PLAYER EST MORT

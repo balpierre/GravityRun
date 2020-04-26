@@ -235,8 +235,7 @@ int Map::scrollMap()
     if (_scroll.getElapsedTime().asMicroseconds() > 1) {
         _scroll.restart();
         _distance += 2;
-    }
-    if (_score * 50 > _distance)
         _score++;
+    }
     return (0);
 }
