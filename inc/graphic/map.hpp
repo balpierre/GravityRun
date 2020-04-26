@@ -72,5 +72,7 @@ class Map {
 };
 
 int printSimpleVectorString(std::vector<std::string> vec);
+sf::Sprite loadSprite(const std::string path);
+float getScale(float n, float size);
 
 #endif

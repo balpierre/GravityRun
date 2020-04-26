@@ -5,6 +5,7 @@
 ** graphic.cpp
 */
 
+#include "def/keyword.h"
 #include "../../inc/graphic/map.hpp"
 
 Map::Map()
@@ -88,11 +89,14 @@ void Map::initMap(std::string dir)
 
 sf::Sprite Map::getSpriteFromAssetList(char c)
 {
-    for (auto itr = _assetList.begin(); itr != _assetList.end(); ++itr) {
+    auto itr = _assetList.begin();
+
+    for (; itr != _assetList.end(); ++itr) {
         if (itr->first == c) {
-            return (itr->second);
+            break;
         }
     }
+    return (itr->second);
 }
 
 float getScale(float n, float size)
@@ -120,7 +124,7 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
 
     for (unsigned int i = 0; i < bloc1.size(); i++) {
         for (unsigned int j = 0; j < bloc1[i].size() && ( (int)(j * _size - _distance) < 1920) ; j++) {
-            if (bloc1[i][j] == 'X' || bloc1[i][j] == '#' && ((int)(j * _size) - _distance) > 0) {
+            if (bloc1[i][j] == 'X' || (bloc1[i][j] == '#' && ((int)(j * _size) - _distance) > 0)) {
                 pos.x =  (((int)j) * _size) - _distance;
                 pos.y = (i * _size);
                 s = getSpriteFromAssetList(bloc1[i][j]);
@@ -131,8 +135,8 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
         }
         if ((bloc1[i].size() * _size) - _distance <= window.getSize().x && i < bloc2.size()) {
             for (unsigned int j = 0; j < bloc2[i].size() && ( (int)((bloc1[i].size() + j) * _size) - _distance) < (int)window.getSize().x; j++) {
-                if (bloc2[i][j] == 'X' || bloc2[i][j] == '#' &&
-                    ((int)((bloc1[i].size() + j) * _size) - _distance) > 0) {
+                if (bloc2[i][j] == 'X' || (bloc2[i][j] == '#' &&
+                    ((int)((bloc1[i].size() + j) * _size) - _distance) > 0)) {
                     pos.x = (((bloc1[i].size() + j) * _size) - _distance);
                     pos.y = (i * _size);
                     s = getSpriteFromAssetList(bloc2[i][j]);
@@ -143,6 +147,7 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
             }
         }
     }
+    return (0x0);
 }
 
 int Map::draw(sf::RenderWindow &window)
@@ -158,9 +163,10 @@ int Map::draw(sf::RenderWindow &window)
         }
     }
     drawBloc(window, _bloc[_actualBock], _bloc[_nextBlock]);
+    return (0);
 }
 
-std::vector<std::string> Map::getMap(sf::Vector2f posPlayer)
+std::vector<std::string> Map::getMap(sf::Vector2f posPlayer __unused)
 {
     std::vector<std::string> res;
 
@@ -178,7 +184,7 @@ void Map::setSpeed(int speed)
 int Map::getPos()
 {
     for (unsigned int i = 0; i < _bloc[_actualBock].size(); i++) {
-        for (int j = 0; j < _bloc[_actualBock][i].size(); j++) {
+        for (uint j = 0; j < _bloc[_actualBock][i].size(); j++) {
             if ((j) - _distance / _size == 0)
                 return (j);
         }
