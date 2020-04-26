@@ -112,6 +112,8 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
 {
     sf::Vector2f pos(0, 0);
     sf::Sprite s;
+    int in = 0;
+    int out = 0;
 
     for (unsigned int i = 0; i < bloc1.size(); i++) {
         // std::cout << (0 * _size) - _distance << std::endl;
@@ -123,6 +125,10 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                 s = getSpriteFromAssetList(bloc1[i][j]);
                 s.setPosition(pos);
                 s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
+                if (s.getPosition().x < 0 || s.getPosition().x > 1920)
+                    out++;
+                else
+                    in++;
                 window.draw(s);
             }
         }
@@ -136,6 +142,10 @@ int Map::drawBloc(sf::RenderWindow &window, std::vector<std::string> bloc1, std:
                     s = getSpriteFromAssetList(bloc2[i][j]);
                     s.setPosition(pos);
                     s.setScale((float)getScale(s.getTextureRect().width, _size), (float)getScale(s.getTextureRect().width, _size));
+                     if (s.getPosition().x < 0 || s.getPosition().x > 1920)
+                        out++;
+                    else
+                        in++;
                     window.draw(s);
                 }
             }

@@ -29,18 +29,19 @@ sf::Vector2f Player::get_pos()
 void Player::check_collision(std::vector<std::string> map, int dist)
 {
     if (this->_acc > 0) {
-        if ( map[ ((int)((float)this->_nextpos.y / 50.0f + 1.0f / 2.0f)) ][ dist / 50 + this->_pos.x / 50] == 'X' )/*|| (this->_nextpos.y >= 1000 && this->_acc > 0 ||
+        if ( IS_A_WALL(map[ ((int)((float)this->_nextpos.y / 50.0f + 1.0f / 2.0f)) ][ dist / 50 + this->_pos.x / 50]) )/*|| (this->_nextpos.y >= 1000 && this->_acc > 0 ||
          this->_nextpos.y <= 0 && this->_acc < 0))*/
             this->_colY = true;
         else
             this->_colY = false;
     } else
-        if (map[this->_nextpos.y / 50][ dist / 50 + this->_pos.x / 50] == 'X' )/*|| (this->_nextpos.y >= 1000 && this->_acc > 0 ||
+        if (IS_A_WALL(map[this->_nextpos.y / 50][ dist / 50 + this->_pos.x / 50]) )/*|| (this->_nextpos.y >= 1000 && this->_acc > 0 ||
          this->_nextpos.y <= 0 && this->_acc < 0))*/
             this->_colY = true;
         else
             this->_colY = false;
-
+    if (IS_A_WALL(map[this->_pos.y / 50][ dist / 50 + this->_pos.x / 50 + 1]))
+        this->_pos.x -=2;
     // if (map[this->_pos.y / 50][this->_nextpos.x / 50] == 'X')
     //     this->_colX = true;
     // else
@@ -52,6 +53,7 @@ void Player::update(std::vector<std::string> map, int dist)
 {
     if (DURATION<MILLISECONDS>(NOW - _lastUpt).count() > UPDATE_CD)
     {
+        std::cout << "Time to update pos " << DURATION<MILLISECONDS>(NOW - _lastUpt).count() << std::endl;
         // if (this->_pos.y >= 1000 && this->_acc > 0 ||
         // this->_pos.y <= 0 && this->_acc < 0)
         //     return;
