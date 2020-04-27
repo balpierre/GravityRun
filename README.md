@@ -15,7 +15,13 @@ Dependencies list:
 
 ## BUILD
 
-A simple `make`
+`make`
+
+## RUN
+
+`./GravityRun.bin`
+
+Use the space bar to flip the gravity.
 
 ## EPILOGUE
 

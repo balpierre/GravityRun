@@ -155,9 +155,7 @@ int Map::draw(sf::RenderWindow &window)
     drawBackground(window);
     for (unsigned int i = 0; i < _bloc[_actualBock].size(); i++) {
         if (( _bloc[_actualBock][i].size() * _size) - _distance <= 0) {
-            // _sum += (_bloc[_actualBock].size()) - 1;
             _distance = 0;
-
             _actualBock = _nextBlock;
             _nextBlock = std::experimental::randint(0, (int)_filePaths.size() - 1);
         }
